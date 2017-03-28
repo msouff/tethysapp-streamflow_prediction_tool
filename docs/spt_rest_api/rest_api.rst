@@ -90,3 +90,13 @@ Example
 -------
 >>> import requests
 >>> res = requests.get('http://[HOST_Portal]/apps/streamflow-prediction-tool/api/GetAvailableDates/?watershed_name=Nepal&subbasin_name=Central&reach_id=5', headers={'Authorization': 'Token asdfqwer1234'})
+
+GetWatersheds
+=============
+
+This method takes no parameters and returns a list of the available watersheds.
+
+Example
+-------
+>>> import requests
+>>> res = requests.get('http://[HOST_Portal]/apps/streamflow-prediction-tool/api/GetWatersheds/', headers={'Authorization': 'Token asdfqwer1234'})
