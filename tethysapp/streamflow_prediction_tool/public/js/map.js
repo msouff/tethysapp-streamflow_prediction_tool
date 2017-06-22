@@ -1654,7 +1654,7 @@ var ERFP_MAP = (function() {
                 step: 16,
                 connect: true,
                 snap: true,
-                start: [date_array[0].getTime(), date_array[15].getTime()],
+                start: [date_array[0].getTime(), date_array[5].getTime()],
                 format: wNumb({
                     decimals: 0
                 })
