@@ -6,7 +6,7 @@ import json
 import datetime as dt
 
 
-from .controllers_ajax import ecmwf_get_hydrograph, era_interim_get_hydrograph, ecmwf_get_avaialable_dates
+from .controllers_ajax import ecmwf_get_hydrograph, era_interim_get_hydrograph, ecmwf_get_avaialable_dates, generate_warning_points
 from .model import mainSessionMaker, Watershed
 
 
@@ -181,3 +181,13 @@ def get_watershed_list(request):
         return JsonResponse(watershed_list, safe=False)
     else:
         return JsonResponse(["No watersheds found"], safe=False)
+
+@api_view(['GET'])
+@authentication_classes((TokenAuthentication,))
+def get_warning_points(request):
+    """
+	Controller that will returned generated warning points in json format
+	"""
+    warning_points = generate_warning_points(request)
+    return warning_points
+    
