@@ -30,7 +30,10 @@
 {% endblock %}
 
 {% block header_buttons %}
-  <div class="header-button glyphicon-button" data-toggle="tooltip" data-placement="bottom" title="View Chart">
+<div class="header-button glyphicon-button" data-toggle="tooltip" data-placement="bottom" title="View Layers">
+    <a data-toggle="modal" data-target="#layers_modal"><span class="glyphicon glyphicon-list-alt"></span></a>
+</div>
+<div class="header-button glyphicon-button" data-toggle="tooltip" data-placement="bottom" title="View Chart">
     <a data-toggle="modal" data-target="#chart_modal"><span class="glyphicon glyphicon-globe"></span></a>
   </div>
   <div class="header-button glyphicon-button" data-toggle="tooltip" data-placement="bottom" title="Warning Flag Settings">
@@ -521,8 +524,15 @@
 {% endblock %}
 
 {% block scripts %}
-  {{ block.super }}
-  <script src="/static/tethys_gizmos/js/plot_view.js" type="text/javascript"></script>
-  <script src="{% static 'streamflow_prediction_tool/js/waterml_parser.js' %}" type="text/javascript"></script>
-  <script src="{% static 'streamflow_prediction_tool/js/map.js' %}" type="text/javascript"></script>
+{{ block.super }}
+<script>
+    $(function() {
+        //turn navigation bar and toggle navigation icon off
+        $(".toggle-nav").removeClass('toggle-nav');
+        $("#app-content-wrapper").removeClass('show-nav');
+    });
+</script>
+<script src="/static/tethys_gizmos/js/plot_view.js" type="text/javascript"></script>
+<script src="{% static 'streamflow_prediction_tool/js/waterml_parser.js' %}" type="text/javascript"></script>
+<script src="{% static 'streamflow_prediction_tool/js/map.js' %}" type="text/javascript"></script>
 {% endblock %}
