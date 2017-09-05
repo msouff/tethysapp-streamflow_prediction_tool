@@ -9,49 +9,49 @@
 <input id="watershed_id" type="hidden" value="{{watershed.id}}"/>
 {% gizmo text_input watershed_name_input %}
 {% gizmo text_input subbasin_name_input %}
-<h3>Data Storage Input</h3>
+<h3>Base de Datos</h3>
 {% gizmo select_input data_store_select %}
-<h5>ECMWF Data Storage Input</h5>
+<h5>Información sobre la Base de Datos</h5>
 {% gizmo text_input data_store_watershed_name_input %}
 {% gizmo text_input data_store_subbasin_name_input %}
 <div class="form-group data_store{% if watershed.data_store_id == 1 %} hidden{% endif %}">
-    <label class="control-label" for="ecmwf-rapid-files-upload-input">ECMWF RAPID Input Files (Optional)</label>
+    <label class="control-label" for="ecmwf-rapid-files-upload-input">GloFAS-RAPID archivos de entrada (Opcional)</label>
     <input id="ecmwf-rapid-files-upload-input" name="ecmwf-rapid-files-upload-input" type="file" accept=".zip">
-    <p class="help-block">These files are used on the computatonal node to run the simulation.</p>
+    <p class="help-block">Estos archivos son usados en la computación de la simulación.</p>
 </div>
 
-<h3>Geoserver Location</h3>
+<h3>Servidor Geoespacial</h3>
 {% gizmo select_input geoserver_select %}
 {% gizmo toggle_switch shp_upload_toggle_switch %}
 <!-- Drainage Line !-->
 {% gizmo text_input geoserver_drainage_line_input %}
 <div class="form-group geo_upload">
-    <label class="control-label" for="drainage-line-shp-upload-input">Drainage Line Shapefile</label>
+    <label class="control-label" for="drainage-line-shp-upload-input">Shapefile con Red Fluvial</label>
     <input id="drainage-line-shp-upload-input" name="drainage-line-shp-upload-input" type="file" accept=".shp,.shx,.prj,.dbf" multiple>
-    <p class="help-block hidden">Must select file to submit!</p>
+    <p class="help-block hidden">¡Debe seleccionar archivo para enviar!</p>
 </div>
-<p class="help-block geo_upload">Need .shp, .shx, .prj, .dbf files.</p>
+<p class="help-block geo_upload">Requiere archivos .shp, .shx, .prj, .dbf.</p>
 <!-- Boundaries !-->
 {% gizmo text_input geoserver_boundary_input %}
 <div class="form-group geo_upload">
-    <label class="control-label" for="boundary-shp-upload-input">Boundary Shapefile (Optional)</label>
+    <label class="control-label" for="boundary-shp-upload-input">Shapefile con Sub-Cuencas (Opcional)</label>
     <input id="boundary-shp-upload-input" name="boundary-shp-upload-input" type="file" accept=".shp,.shx,.prj,.dbf" multiple>
 </div>
-<p class="help-block geo_upload">Need .shp, .shx, .prj, .dbf files.</p>
+<p class="help-block geo_upload">Requiere archivos .shp, .shx, .prj, .dbf.</p>
 <!-- Gages !-->
 {% gizmo text_input geoserver_gage_input %}
 <div class="form-group geo_upload">
-    <label class="control-label" for="gage-shp-upload-input">Gage Shapefile (Optional)</label>
+    <label class="control-label" for="gage-shp-upload-input">Shapefile con Estaciones de Observación (Opcional)</label>
     <input id="gage-shp-upload-input" name="gage-shp-upload-input" type="file" accept=".shp,.shx,.prj,.dbf" multiple>
 </div>
-<p class="help-block geo_upload">Need .shp, .shx, .prj, .dbf files.</p>
+<p class="help-block geo_upload">Requiere archivos .shp, .shx, .prj, .dbf.</p>
 <!-- Historical Flood Maps !-->
 {% gizmo text_input geoserver_historical_flood_map_input %}
 <!-- AHPS Stations !-->
 {% gizmo text_input geoserver_ahps_station_input %}
 <div class="form-group geo_upload">
-    <label class="control-label" for="ahps-station-shp-upload-input">AHPS Station Shapefile (Optional)</label>
+    <label class="control-label" for="ahps-station-shp-upload-input">AHPS Station Shapefile (Opcional)</label>
     <input id="ahps-station-shp-upload-input" name="ahps-station-shp-upload-input" type="file" accept=".shp,.shx,.prj,.dbf" multiple>
 </div>
-<p class="help-block geo_upload">Need .shp, .shx, .prj, .dbf files.</p>
+<p class="help-block geo_upload">Requiere archivos .shp, .shx, .prj, .dbf.</p>
 <!-- Geoserver Search for FloodMap ~-->

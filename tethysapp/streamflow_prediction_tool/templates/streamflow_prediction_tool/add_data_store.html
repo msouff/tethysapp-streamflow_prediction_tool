@@ -12,19 +12,19 @@
 
 {% block app_content %}
     <div id="message" class="alert alert-danger hidden" role="alert"></div>
-    <h1>Add Data Store</h1>
-    <em>Where the predictions are stored.</em><br/><br/>
+    <h1>Agregar Base de Datos</h1>
+    <em>Donde se guardan los pronósticos.</em><br/><br/>
     {% gizmo text_input data_store_name_input %}
     {% gizmo text_input data_store_owner_org_input %}
     {% gizmo select_input data_store_type_select_input %}
     {% gizmo text_input data_store_endpoint_input %}
     <div class="form-group">
-        <label class="control-label" for="data-store-api-key-input">Data Store API Key</label>
+        <label class="control-label" for="data-store-api-key-input">API Key de la Base de Datos</label>
         <div class="input-group">
             <input id="data-store-api-key-input" class="form-control" name="data-store-api-key-input" type="password" placeholder="e.g.: a1b2c3-d4e5d6-f7g8h9">
             <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
         </div>
-        <p class="help-block hidden">No data store API key specified.</p>
+        <p class="help-block hidden">API key de Base de Datos no Especificada.</p>
     </div>
     {% gizmo button add_button %}
 {% endblock %}

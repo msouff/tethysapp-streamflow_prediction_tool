@@ -17,16 +17,17 @@ class StreamflowPredictionTool(TethysAppBase):
     Tethys app class for streamflow_prediction_tool.
     """
 
-    name = 'Streamflow Prediction Tool'
+    name = 'Herramienta de Prediccion de Caudales'
     index = 'streamflow_prediction_tool:home'
     icon = 'streamflow_prediction_tool/images/logo.png'
     package = 'streamflow_prediction_tool'
     root_url = 'streamflow-prediction-tool'
     color = '#34495e'
-    description = ('Provides 15-day streamflow predicted estimates by using '
-                   'ECMWF (ecmwf.int) runoff predictions routed with the RAPID'
-                   ' (rapid-hub.org) program. Return period estimates '
-                   'and warning flags aid in determining the severity.')
+    description = ('Provee pronosticos estimados usando GloFAS '
+                   '(ecmwf.int) como prediccion de escorrentia y el '
+                   'modelo RAPID (rapid-hub.org) para propagar los caudales. '
+                   'Estimaciones de periodo de retorno y alertas ayudan a '
+                   'determinar la severidad de los pronosticos.')
     enable_feedback = False
     feedback_emails = []
 

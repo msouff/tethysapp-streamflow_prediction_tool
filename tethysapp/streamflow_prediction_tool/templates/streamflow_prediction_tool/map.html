@@ -52,7 +52,7 @@
     <div class="alert alert-info alert-dismissible intro_message" role="alert">
         <button id="close_map_intro_message" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-        Zoom in and click on a river segment or search by river ID to view predictions.
+        Haga zoom en el mapa y click en uno de los tramos de río o busque por número de identificación usando el ícono de busqueda.
     </div>
     <!-- Map Area -->
     <div id="map" class="map" base-layer-info="{{base_layer_info}}" watershed-layers-info-array="{{watershed_layers_info_array_json}}"
@@ -64,35 +64,35 @@
          xmlns="http://www.w3.org/2000/svg">
                 <polyline points="19 1, 1 6, 19 14, 1 19" stroke="blue" fill="transparent" stroke-width="2"/>
             </svg>
-            Drainage Line
+            Red Fluvial
         </div>
         <div>
             <svg width="20" height="20" viewPort="0 0 20 20" version="1.1"
          xmlns="http://www.w3.org/2000/svg">
                 <polygon points="1 10, 5 3, 13 1, 19 9, 14 19, 9 13" stroke="black" fill="grey" stroke-width="2"/>
             </svg>
-            Watershed Boundary
+            Cuenca
         </div>
         <div>
             <svg width="20" height="20" viewPort="0 0 20 20" version="1.1"
          xmlns="http://www.w3.org/2000/svg">
                 <polygon points="0 20, 10 0, 20 20" stroke="purple" fill="purple" stroke-width="2"/>
             </svg>
-            20-Year Warnings
+            Alerta de 20 años
         </div>
         <div>
             <svg width="20" height="20" viewPort="0 0 20 20" version="1.1"
          xmlns="http://www.w3.org/2000/svg">
                 <polygon points="0 20, 10 0, 20 20" stroke="red" fill="red" stroke-width="2"/>
             </svg>
-            10-Year Warnings
+            Alerta de 10 años
         </div>
         <div>
             <svg width="20" height="20" viewPort="0 0 20 20" version="1.1"
          xmlns="http://www.w3.org/2000/svg">
                 <polygon points="0 20, 10 0, 20 20" stroke="yellow" fill="yellow" stroke-width="2"/>
             </svg>
-            2-Year Warnings
+            Alerta de 2 años
         </div>
     </div>
 {% endblock %}
@@ -105,7 +105,7 @@
                 <div class="modal-body">
                     <div class="alert alert-info intro_message" role="alert">
                         <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-                        Click on a river segment or search by river reach ID to view streamflow predictions.
+                        Click en uno de los tramos de río o busque por número de identificación usando el ícono de busqueda para ver pronóstico.
                     </div>
                     <div id="message" class="alert alert-info hidden" role="alert"></div>
                     <div id="message-error"></div>
@@ -115,8 +115,8 @@
                     </div>
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a id="forecast_tab_link" href="#forecast_tab" aria-controls="forecast_tab" role="tab" data-toggle="tab">Forecast</a></li>
-                        <li role="presentation"><a id="historical_tab_link" href="#historical" aria-controls="historical" role="tab" data-toggle="tab">Historical</a></li>
+                        <li role="presentation" class="active"><a id="forecast_tab_link" href="#forecast_tab" aria-controls="forecast_tab" role="tab" data-toggle="tab">Pronóstico</a></li>
+                        <li role="presentation"><a id="historical_tab_link" href="#historical" aria-controls="historical" role="tab" data-toggle="tab">Simulación histórica</a></li>
                         <li role="presentation"><a id="flow_duration_tab_link" href="#flow_duration" aria-controls="flow_duration" role="tab" data-toggle="tab">Flow-Duration</a></li>
                         <li role="presentation"><a id="daily_tab_link" href="#daily_season" aria-controls="daily_season" role="tab" data-toggle="tab">Daily Season</a></li>
                         <li role="presentation"><a id="monthly_tab_link" href="#monthly_season" aria-controls="monthly_season" role="tab" data-toggle="tab">Monthly Season</a></li>

@@ -12,18 +12,18 @@
 
 {% block app_content %}
     <div id="message" class="alert alert-danger hidden" role="alert"></div>
-    <h1>Add a Geoserver</h1>
-    <em>Where the shapefiles are stored.</em><br/><br/>
+    <h1>Agregar Servidor Geoespacial</h1>
+    <em>Donde se guardan los shapefiles.</em><br/><br/>
     {% gizmo text_input geoserver_name_input %}
     {% gizmo text_input geoserver_url_input %}
     {% gizmo text_input geoserver_username_input %}
     <div class="form-group">
-        <label class="control-label" for="geoserver-password-input">Geoserver Password</label>
+        <label class="control-label" for="geoserver-password-input">Contraseña</label>
         <div class="input-group">
             <input id="geoserver-password-input" class="form-control" name="geoserver-password-input" type="password" placeholder="e.g.: geoserver">
             <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
         </div>
-        <p class="help-block hidden">No geoserver password specified.</p>
+        <p class="help-block hidden">Contraseña de geoserver no especificada.</p>
     </div>
     {% gizmo button add_button %}
 {% endblock %}

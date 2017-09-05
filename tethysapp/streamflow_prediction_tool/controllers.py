@@ -56,13 +56,13 @@ def home(request):
     for group in groups:
         watershed_groups.append((group.name, group.id))
 
-    watershed_select = SelectInput(display_text='Select Watershed(s)',
+    watershed_select = SelectInput(display_text='Seleccione una o mas Cuencas',
                                    name='watershed_select',
                                    options=watershed_list,
                                    multiple=True)
 
     watershed_group_select = \
-        SelectInput(display_text='Select Watershed Group(s)',
+        SelectInput(display_text='Seleccione un Conjunto de Cuencas',
                     name='watershed_group_select',
                     options=watershed_groups,
                     multiple=True)
@@ -382,7 +382,7 @@ def app_map(request):
                             path_to_watershed_files, ".geojson")
 
     # set up the inputs
-    watershed_select = SelectInput(display_text='Select Watershed',
+    watershed_select = SelectInput(display_text='Seleccione una o mas Cuencas',
                                    name='watershed_select',
                                    options=watershed_list, )
     warning_point_date_select = None
@@ -399,14 +399,14 @@ def app_map(request):
                 forecast_date_select_input.append(next_row_info)
 
         warning_point_date_select = \
-            SelectInput(display_text='Select Forecast Date',
+            SelectInput(display_text='Seleccione una fecha de Inicio de Pronostico',
                         name='warning_point_date_select',
                         options=forecast_date_select_input)
 
-    units_toggle_switch = ToggleSwitch(display_text='Units:',
+    units_toggle_switch = ToggleSwitch(display_text='Unidades:',
                                        name='units-toggle',
                                        on_label='Metric',
-                                       off_label='English',
+                                       off_label='Ingles',
                                        size='mini',
                                        initial=True, )
 
@@ -443,13 +443,13 @@ def add_watershed(request):
     session = session_maker()
 
     watershed_name_input = \
-        TextInput(display_text='Watershed Display Name',
+        TextInput(display_text='Nombre del Area de Interes',
                   name='watershed-name-input',
                   placeholder='e.g.: Magdalena',
                   icon_append='glyphicon glyphicon-home')
 
     subbasin_name_input = \
-        TextInput(display_text='Subbasin Display Name',
+        TextInput(display_text='Nombre de la Cuenca',
                   name='subbasin-name-input',
                   placeholder='e.g.: El Banco',
                   icon_append='glyphicon glyphicon-tree-deciduous')
@@ -462,18 +462,18 @@ def add_watershed(request):
                                              data_store.api_endpoint),
                                 data_store.id))
 
-    data_store_select = SelectInput(display_text='Select a Data Store',
+    data_store_select = SelectInput(display_text='Seleccione una base de datos',
                                     name='data-store-select',
                                     options=data_store_list, )
 
     data_store_watershed_name_input = \
-        TextInput(display_text='ECMWF Watershed Data Store Name',
+        TextInput(display_text='Nombre del Area de Interes en la Base de Datos',
                   name='ecmwf-data-store-watershed-name-input',
                   placeholder='e.g.: magdalena',
                   icon_append='glyphicon glyphicon-home')
 
     data_store_subbasin_name_input = \
-        TextInput(display_text='ECMWF Subbasin Data Store Name',
+        TextInput(display_text='Nombre de la Cuenca en la Base de Datos',
                   name='ecmwf-data-store-subbasin-name-input',
                   placeholder='e.g.: el_banco',
                   icon_append='glyphicon glyphicon-tree-deciduous')
@@ -486,52 +486,51 @@ def add_watershed(request):
                                geoserver.id))
     session.close()
     if geoserver_list:
-        geoserver_select = SelectInput(display_text='Select a GeoServer',
+        geoserver_select = SelectInput(display_text='Seleccione un Servidor Geoespacial',
                                        name='geoserver-select',
                                        options=geoserver_list, )
     else:
         geoserver_select = None
 
     geoserver_drainage_line_input = \
-        TextInput(display_text='GeoServer Drainage Line Layer',
+        TextInput(display_text='GeoServer Capa con Red Fluvial',
                   name='geoserver-drainage-line-input',
                   placeholder='e.g.: erfp:streams',
                   icon_append='glyphicon glyphicon-link')
 
     geoserver_boundary_input = \
-        TextInput(display_text='GeoServer Boundary Layer (Optional)',
+        TextInput(display_text='GeoServer Capa con Cuencas (Opcional)',
                   name='geoserver-boundary-input',
                   placeholder='e.g.: erfp:boundary',
                   icon_append='glyphicon glyphicon-link')
 
     geoserver_gage_input = \
-        TextInput(display_text='GeoServer Gage Layer  (Optional)',
+        TextInput(display_text='GeoServer Capa con Estaciones de Observacion (Opcional)',
                   name='geoserver-gage-input',
                   placeholder='e.g.: erfp:gage',
                   icon_append='glyphicon glyphicon-link')
 
     geoserver_hist_flood_input = \
-        TextInput(display_text='GeoServer Historical Flood Map '
-                               'Layer Group (Optional)',
+        TextInput(display_text='GeoServer Mapa con Inundaciones Historicas (Opcional)',
                   name='geoserver-historical-flood-map-input',
                   placeholder='e.g.: erfp:historical_flood_map',
                   icon_append='glyphicon glyphicon-link')
 
     geoserver_ahps_station_input = \
-        TextInput(display_text='GeoServer AHPS Station Layer (Optional)',
+        TextInput(display_text='GeoServer Capa con Estaciones AHPS (Opcional)',
                   name='geoserver-ahps-station-input',
                   placeholder='e.g.: erfp:ahps-station',
                   icon_append='glyphicon glyphicon-link')
 
-    shp_upload_toggle_switch = ToggleSwitch(display_text='Upload Shapefile?',
+    shp_upload_toggle_switch = ToggleSwitch(display_text='Subir Shapefile?',
                                             name='shp-upload-toggle',
-                                            on_label='Yes',
+                                            on_label='Si',
                                             off_label='No',
                                             on_style='success',
                                             off_style='danger',
                                             initial=True, )
 
-    add_button = Button(display_text='Add Watershed',
+    add_button = Button(display_text='Agregar Cuenca',
                         icon='glyphicon glyphicon-plus',
                         style='success',
                         name='submit-add-watershed',
@@ -622,14 +621,14 @@ def edit_watershed(request):
     watershed = session.query(Watershed).get(watershed_id)
 
     watershed_name_input = \
-        TextInput(display_text='Watershed Name',
+        TextInput(display_text='Nombre del Area de Interes',
                   name='watershed-name-input',
                   placeholder='e.g.: magdalena',
                   icon_append='glyphicon glyphicon-home',
                   initial=watershed.watershed_name)
 
     subbasin_name_input = \
-        TextInput(display_text='Subbasin Name',
+        TextInput(display_text='Nombre de la Cuenca',
                   name='subbasin-name-input',
                   placeholder='e.g.: el_banco',
                   icon_append='glyphicon glyphicon-tree-deciduous',
@@ -645,21 +644,21 @@ def edit_watershed(request):
         ))
 
     data_store_select = \
-        SelectInput(display_text='Select a Data Store',
+        SelectInput(display_text='Seleccione una Base de Datos',
                     name='data-store-select',
                     options=data_store_list,
                     initial=["%s (%s)" % (watershed.data_store.name,
                                           watershed.data_store.api_endpoint)])
 
     data_store_watershed_name_input = \
-        TextInput(display_text='ECMWF Watershed Data Store Name',
+        TextInput(display_text='Nombre del Area de Interes en la Base de Datos',
                   name='ecmwf-data-store-watershed-name-input',
                   placeholder='e.g.: magdalena',
                   icon_append='glyphicon glyphicon-home',
                   initial=watershed.ecmwf_data_store_watershed_name)
 
     data_store_subbasin_name_input = \
-        TextInput(display_text='ECMWF Subbasin Data Store Name',
+        TextInput(display_text='Nombre de la Cuenca en la Base de Datos',
                   name='ecmwf-data-store-subbasin-name-input',
                   placeholder='e.g.: el_banco',
                   icon_append='glyphicon glyphicon-tree-deciduous',
@@ -672,7 +671,7 @@ def edit_watershed(request):
         geoserver_list.append(("%s (%s)" % (geoserver.name, geoserver.url),
                                geoserver.id))
 
-    geoserver_select = SelectInput(display_text='Select a GeoServer',
+    geoserver_select = SelectInput(display_text='Seleccione un Servidor Geoespacial',
                                    name='geoserver-select',
                                    options=geoserver_list,
                                    initial=["%s (%s)" %
@@ -680,7 +679,7 @@ def edit_watershed(request):
                                              watershed.geoserver.url)])
 
     geoserver_drainage_line_input = TextInput(
-        display_text='GeoServer Drainage Line Layer',
+        display_text='GeoServer Capa con Red Fluvial',
         name='geoserver-drainage-line-input',
         placeholder='e.g.: erfp:streams',
         icon_append='glyphicon glyphicon-link',
@@ -688,7 +687,7 @@ def edit_watershed(request):
                     if watershed.geoserver_drainage_line_layer else "")
 
     geoserver_boundary_input = TextInput(
-        display_text='GeoServer Boundary Layer (Optional)',
+        display_text='GeoServer Capa con Cuencas (Opcional)',
         name='geoserver-boundary-input',
         placeholder='e.g.: erfp:boundary',
         icon_append='glyphicon glyphicon-link',
@@ -696,7 +695,7 @@ def edit_watershed(request):
                     if watershed.geoserver_boundary_layer else "")
 
     geoserver_gage_input = TextInput(
-        display_text='GeoServer Gage Layer (Optional)',
+        display_text='GeoServer Capa con Estaciones de Observacion (Opcional)',
         name='geoserver-gage-input',
         placeholder='e.g.: erfp:gage',
         icon_append='glyphicon glyphicon-link',
@@ -704,7 +703,7 @@ def edit_watershed(request):
                     if watershed.geoserver_gage_layer else "")
 
     geoserver_hist_flood_input = TextInput(
-        display_text='GeoServer Historical Flood Map Layer Group (Optional)',
+        display_text='GeoServer Mapa con Inundaciones Historicas (Opcional)',
         name='geoserver-historical-flood-map-input',
         placeholder='e.g.: erfp:historical_flood_map',
         icon_append='glyphicon glyphicon-link',
@@ -712,14 +711,14 @@ def edit_watershed(request):
                     if watershed.geoserver_historical_flood_map_layer else "")
 
     geoserver_ahps_station_input = TextInput(
-        display_text='GeoServer AHPS Station Layer (Optional)',
+        display_text='GeoServer Capa con Estaciones AHPS (Opcional)',
         name='geoserver-ahps-station-input',
         placeholder='e.g.: erfp:ahps-station',
         icon_append='glyphicon glyphicon-link',
         initial=watershed.geoserver_ahps_station_layer.name
                     if watershed.geoserver_ahps_station_layer else "")
 
-    shp_upload_toggle_switch = ToggleSwitch(display_text='Upload Shapefile?',
+    shp_upload_toggle_switch = ToggleSwitch(display_text='Subir Shapefile?',
                                             name='shp-upload-toggle',
                                             on_label='Yes',
                                             off_label='No',
@@ -727,7 +726,7 @@ def edit_watershed(request):
                                             off_style='danger',
                                             initial=False)
 
-    add_button = Button(display_text='Add Watershed',
+    add_button = Button(display_text='Agregar Cuenca',
                         icon='glyphicon glyphicon-plus',
                         style='success',
                         name='submit-add-watershed',
@@ -771,7 +770,7 @@ def add_data_store(request):
                                                       as_sessionmaker=True)
     session = session_maker()
 
-    data_store_name_input = TextInput(display_text='Data Store Server Name',
+    data_store_name_input = TextInput(display_text='Nombre de la Base de Datos',
                                       name='data-store-name-input',
                                       placeholder='e.g.: My CKAN Server',
                                       icon_append='glyphicon glyphicon-tag')
@@ -787,24 +786,24 @@ def add_data_store(request):
     session.close()
 
     data_store_type_select_input = \
-        SelectInput(display_text='Data Store Type',
+        SelectInput(display_text='Tipo de Base de Datos',
                     name='data-store-type-select',
                     options=data_store_type_list,
                     initial=data_store_type_list[0][0])
 
     data_store_endpoint_input = TextInput(
-        display_text='Data Store API Endpoint',
+        display_text='API Endpoint de la Base de Datos',
         name='data-store-endpoint-input',
         placeholder='e.g.: http://ciwweb.chpc.utah.edu/api/3/action',
         icon_append='glyphicon glyphicon-cloud-download')
 
     data_store_owner_org_input = TextInput(
-        display_text='Data Store Owner Organization',
+        display_text='Organizacion propietaria de la Base de Datos',
         name='data-store-owner_org-input',
         placeholder='e.g.: byu',
         icon_append='glyphicon glyphicon-home')
 
-    add_button = Button(display_text='Add Data Store',
+    add_button = Button(display_text='Agregar una Base de Datos',
                         icon='glyphicon glyphicon-plus',
                         style='success',
                         name='submit-add-data-store',
@@ -847,24 +846,24 @@ def add_geoserver(request):
     """
     Controller for the app add_geoserver page.
     """
-    geoserver_name_input = TextInput(display_text='GeoServer Name',
+    geoserver_name_input = TextInput(display_text='Nombre del Servidor Geoespacial',
                                      name='geoserver-name-input',
                                      placeholder='e.g.: My GeoServer',
                                      icon_append='glyphicon glyphicon-tag')
 
     geoserver_url_input = \
-        TextInput(display_text='GeoServer Url',
+        TextInput(display_text='Url del Servidor',
                   name='geoserver-url-input',
                   placeholder='e.g.: http://localhost:8181/geoserver',
                   icon_append='glyphicon glyphicon-cloud-download')
 
     geoserver_username_input = \
-        TextInput(display_text='GeoServer Username',
+        TextInput(display_text='Nombre de Usuario',
                   name='geoserver-username-input',
                   placeholder='e.g.: admin',
                   icon_append='glyphicon glyphicon-user')
 
-    add_button = Button(display_text='Add GeoServer',
+    add_button = Button(display_text='Agregar Servidor',
                         icon='glyphicon glyphicon-plus',
                         style='success',
                         name='submit-add-geoserver',
@@ -907,7 +906,7 @@ def add_watershed_group(request):
     Controller for the app add_watershed_group page.
     """
     watershed_group_name_input = \
-        TextInput(display_text='Watershed Group Name',
+        TextInput(display_text='Nombre de Conjunto de Cuencas',
                   name='watershed-group-name-input',
                   placeholder='e.g.: My Watershed Group',
                   icon_append='glyphicon glyphicon-tag')
@@ -931,12 +930,12 @@ def add_watershed_group(request):
     session.close()
 
     watershed_select = SelectInput(
-        display_text='Select Watershed(s) to Add to Group',
+        display_text='Seleccione Cuencas para agregar al Conjunto',
         name='watershed_select',
         options=watershed_list,
         multiple=True, )
 
-    add_button = Button(display_text='Add Watershed Group',
+    add_button = Button(display_text='Agregar Conjunto',
                         icon='glyphicon glyphicon-plus',
                         style='success',
                         name='submit-add-watershed-group',

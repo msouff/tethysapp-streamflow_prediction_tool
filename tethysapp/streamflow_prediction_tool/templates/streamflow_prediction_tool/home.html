@@ -10,42 +10,42 @@
 
 {% block app_content %}
     {% if watersheds_length > 0 %}
-        <h1>Select a Watershed</h1>
+        <h1>Selecione una Cuenca</h1>
         <form id="watershedForm" action="{% url 'streamflow_prediction_tool:map' %}" method="get">
             {% gizmo select_input watershed_select %}
             <div class="btn-group ">
                 <button name="submit-go-to-map" class="btn btn-success" role="button" form="watershedForm" submit="True" id="submit-go-to-map">
-                <span class="glyphicon glyphicon-play"></span>View Watershed(s)
+                <span class="glyphicon glyphicon-play"></span>Ver Cuenca(s)
               </button>
             </div>
         </form>
         {% if user.is_superuser or user.is_staff %}
-            <p class="help-block">Don't see the watershed you want? Add one
-            <a href="{% url 'streamflow_prediction_tool:add-watershed' %}">here</a>.</p>
+            <p class="help-block">¿No ve ninguna cuenca? Agregue una
+            <a href="{% url 'streamflow_prediction_tool:add-watershed' %}">aquí</a>.</p>
         {% endif %}
-        <h4>Or...</h4>
-        <h1>Select a Watershed Group</h1>
+        <h4>O...</h4>
+        <h1>Seleccione un Conjunto de Cuencas</h1>
         {% if watershed_group_length > 0 %}
             <form id="watershedGroupForm" action="{% url 'streamflow_prediction_tool:map' %}" method="get">
                 {% gizmo select_input watershed_group_select %}
                 <div class="btn-group ">
                     <button name="submit-go-to-map" class="btn btn-success" role="button" form="watershedGroupForm" submit="True" id="submit-go-to-map">
-                    <span class="glyphicon glyphicon-play"></span>View Watershed Group
+                    <span class="glyphicon glyphicon-play"></span>Ver Conjunto de Cuencas
                   </button>
                 </div>
             </form>
         {% else %}
-            <div class="alert alert-warning" role="alert">No watershed groups found ...</div>
+            <div class="alert alert-warning" role="alert">Ningún conjunto de cuencas ha sido encontrado ...</div>
         {% endif %}
         {% if user.is_superuser or user.is_staff %}
-        <p class="help-block">Don't see the watershed group you want? Add one
-        <a href="{% url 'streamflow_prediction_tool:add-watershed-group' %}">here</a>.</p>
+        <p class="help-block">¿No ve ningún conjunto de cuencas? Agregue uno
+        <a href="{% url 'streamflow_prediction_tool:add-watershed-group' %}">aquí</a>.</p>
         {% endif %}
     {% else %}
-        <div class="alert alert-warning" role="alert">Sorry. There appear to be no watersheds in the database at this time.</div>
+        <div class="alert alert-warning" role="alert">No hay ninguna cuenca en la base de datos.</div>
         {% if user.is_superuser or user.is_staff %}
-            <p>To add one click <a href="{% url 'streamflow_prediction_tool:add-watershed' %}">here.</a>
-            <br>Forgot how? Refresh yourself on the steps <a href="{% url 'streamflow_prediction_tool:getting-started' %}">here</a>.
+            <p>Para aguegar una haga Click <a href="{% url 'streamflow_prediction_tool:add-watershed' %}">aquí.</a>
+            <br>¿Olvidó como? Repase las instrucciones <a href="{% url 'streamflow_prediction_tool:getting-started' %}">aquí</a>.
         {% else %}
         {% endif %}
     {% endif %}

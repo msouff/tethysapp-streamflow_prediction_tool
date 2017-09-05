@@ -11,191 +11,192 @@
 {% block app_content %}
 <div style="max-width:800px">
 <div id="welcome" class="hidden">
-    <h1>Welcome!</h1>
-    <p> Is this your first time running the Streamflow Prediction Tool? Or do you simply need a refresher on how it
-        works? Either way, this page contains the information you need to get started using this application.
+    <h1>¡Bienvenido!</h1>
+    <p> ¿Es esta su primera vez utilizando la Herramienta de Predicción de Caudales o simplemente necesita refrescar su memoria?
+        De cualquier manera, esta página contiene la información que necesita para comenzar a usar esta herramienta.
     </p>
 </div>
-<h1>Getting Started</h1>
-<p><strong>**The steps must be completed in the order given for the app to function properly**</strong></p>
+<h1>Guía</h1>
+<p><strong>**Los pasos deben ser completados en el mismo orden dado para que la herramienta funcione correctamente**</strong></p>
 <p>
-    To make reading and executing these instructions as easy as possible, we recommend that you open up another 
-    instance of the Streamflow Prediction Tool in a new window, using one window to read and the other to execute.
+    Para facilitar la aplicación de los pasos, sugerimos que abra esta herramienta en otra ventana, usando una ventana para
+    aplicar los pasos y la otra para leer las instrucciones.
 </p>
 <p>
 <ol>
-    <li id="adjust-settings" class="how-to-steps">Adjust App Settings</li>
-    <p>Before you can do anything, you must make sure that your app settings are correct.
-       Go to <a href="http://localhost:8000/admin/tethys_apps/tethysapp/" target="_blank">http://localhost:8000/admin/tethys_apps/tethysapp</a> and select 'Streamflow Prediciton Tool'
+    <li id="adjust-settings" class="how-to-steps">Ajutes Principales</li>
+    <p>Antes que nada, debe asegurarse que los parametros en la página de ajustes principales de la herramienta son los correctos.
+       Vaya a <a href="http://localhost:8000/admin/tethys_apps/tethysapp/" target="_blank">http://localhost:8000/admin/tethys_apps/tethysapp</a> y seleccione 'Herramienta de Predicción de Caudales'
     <p>
         <ul>
             <h4><li>App ID</li></h4>
-                <p>This is the ID assigned to your instance of the app. It is used in certain background tasks and assures that any data you upload is unique and does not tamper with that added by others.</p>
+                <p>Este es el ID asignado a su herramienda. Es usado para ciertas tareas y se asegura que los datos producidos son únicos.</p>
             <h4><li>Server Folders</li></h4>
                 <p>
-                    These locations correspond to the local server directories where your uploaded files will be stored.
+                    Estos son los directorios locales donde se guardarán los pronósticos.
                     <br><br>
-                    <strong>NOTE:</strong> This local server is the server on which the instance of the app that you are using is being hosted. For example, one instance of this app
-                    exists at <a href="http://apps.hydroshare.org/" target="_blank">apps.hydroshare.org</a> and is hosted by the hydroshare.org server.
-                    Another instance of this app exists at <a href="http://demo.tethys.ci-water.org/" target="_blank">demo.tethys.ci-water.org</a> and
-                    is hosted by the ci-water server. If you installed the Tethys Platform on your own computer, then your computer may serve as a local server.
-                    Whatever the host server may be, if you do not have access to it then <strong>DO NOT CHANGE THESE FILE PATHS</strong>.
+                    <strong>NOTA:</strong> Este servidor local es el servido donde está instalada la herramienta. Por ejemplo, For example, una instancia de esta herramienta
+                    existe en <a href="http://tethys.byu.edu/" target="_blank">tethys.byu.edu</a> y esta alojada en servidores de Brigham Young University.
+                    Si instaló Tethys en su propia computadora, entoces su computadora sería su servidor local.
+                    Cualquiera que sea su servidor, si usted no tiene acceso a él <strong>NO CAMBIE ESTOS DIRECTORIOS</strong>.
                     <br><br>
-                    There are two fields each corresponding to a different server foler location: one for ECMWF-RAPID files, one for ERA Interim RAPID files.
-                    Each folder must have read and write permissions granted. To change permissions, locate the folder, right click on it
-                    and select either "Get Info" (MAC users), or "Properties" (Linux or Windows users). There will be a tab containing
-                    "Permissions" in its heading. Choose to change or edit these permissions and set them to both Read and Write.
-                    If you are using a command prompt simply type (assuming the server user is <em>apache</em>): <code>#chown -r apache:apache [directory path]; chmod -R u+rx [directory path]</code>.
+                    Hay dos campos correspondientes a diferentes directorios en su servidor local: uno para los pronósticos de caudales
+                    y otro para los pronósticos historicos simulados. Cada directorio debe tener permisos de lectura y escritura. Para
+                    cambiar los permisos, vaya a el directorio y haga click derecho en él y seleccione "Obtener Información" (Usuarios de Mac)
+                    o "Propiedades" (Usuarios de Linux o Windows). Seleccione el tab con el encabezado "permisos" y cambie los permisos a
+                    permisos de lectura y escritura. Si está utilizando la terminal, simplemente escriba (asumiendo que el usuario del servidor es
+                    <em>apache</em>): <code>#chown -r apache:apache [directorio]; chmod -R u+rx [directorio]</code>.
                 </p>
         </ul>
-    <li id="add-geoserver" class="how-to-steps">Add a Geoserver</li>
+    <li id="add-geoserver" class="how-to-steps">Agregar un Servidor Geoespacial</li>
         <p>
-            Once your settings have been established, it's time to add a geoserver. On the <strong>left menu bar</strong>
-            under the <strong>Add</strong> heading click the <strong>Add a Geoserver</strong> option.
+            Una vez los ajustes principales han sido establesidos, es hora de agregar un servidor geoespacial. En
+            <strong>la barra de navegación a la izquierda</strong> bajo el encabezado <strong>Agregar</strong> haga click en
+            la opción de <strong>Agregar un Servidor Geoespacial</strong>
         </p>
-        <p>You should see the following screen:</p>
+        <p>Verá la siguiente pantalla:</p>
         <img src="{% static 'streamflow_prediction_tool/images/screenshot_add_geoserver.png' %}" class="screenshots">
         <br><br>        
         <p>
-            On this page you will add the geoserver(s) that you will be working with. You can add as many geoservers as you would like.
-            These can later be managed (updated/deleted) on the <strong>Manage Geoservers</strong> page located on 
-            the <strong>left menu bar</strong> under the <strong>Manage</strong> heading.
-            For each geoserver you add, all fields shown must be completed. A description of each field is given here:
+            En esta página usted agregará un servidor geoespacial (Geoserver) con el que estará trabahando. Puede agregar varios
+            servidores. Estos pueden ser administrados luego (editados/borrados) en la option de <strong>Administración de Servidor
+            Geoespacial</strong> en <strong>la barra de navegación a la izquierda</strong> bajo el encabezado de
+            <strong>Administración</strong>. Por cada servidor geoespacial que agregue, todos los campos mostrados deben ser completados.
+            Una descripción de cada campo es dada aquí:
         </p>
         <p>
             <ul>
-                <h4><li>Geoserver Name</li></h4>
+                <h4><li>Nombre de Servidor Geoespacial</li></h4>
                     <p>
-                        Since you can add multiple geoservers, a unique name must be given to help you recognize each one within this app.
-                        This name can be anything you would like.
+                        Como puede agregar más de un servidor, un nombre único debe ser dado para ayudar a reconocer cada servidor.
+                        Este nombre puede ser cualquier nombre que desee.
                     </p>
-                <h4><li>Geoserver Url</li></h4>
+                <h4><li>Url del Servidor</li></h4>
                     <p>
-                        This is the specific URL of your geoserver. NOTE: This URL <em>must</em> end in "/geoserver".
+                        Este es el URL específico de su servidor geoespacial (Geoserver). NOTA: Este URL <em>debe</em> terminar en "/geoserver".
                     </p>                       
-                <h4><li>Geoserver Username</li></h4>
+                <h4><li>Nombre de Usuario</li></h4>
                     <p>
-                        This is a username associated with your geoserver. In other words, this is the username you would use to login to the
-                        geoserver if you were to access it directly at the URL address listed above.
+                        Este es el usuario asociado con su servidor geoespacial (Geoserver).
                     </p>
-                <h4><li>Geoserver Password</li></h4>
+                <h4><li>Contraseña</li></h4>
                     <p>
-                        This is the password associated with the username given above.
+                        Esta es la contraseña asociada con su servidor geoespacial (geoserver).
                     </p>                       
             </ul>
-    <li id="add-data-store" class="how-to-steps">Add a Data Store</li>
+    <li id="add-data-store" class="how-to-steps">Agregar una Base de Datos</li>
         <p>
-            On the <strong>left menu bar</strong> under the <strong>Add</strong> 
-            heading click the <strong>Add a Data Store</strong> option.
+            En <strong>la barra de navegación a la izquierda</strong> bajo el encabezado de <strong>Agregar</strong>
+            haga click en la opción de <strong>Agregar Base de Datos</strong>.
         </p>
-        <p>You should see the following screen:</p>
+        <p>Verá la siguiente pantalla:</p>
         <img src="{% static 'streamflow_prediction_tool/images/screenshot_add_data_store.png' %}" class="screenshots">
         <br><br>        
         <p>
-            On this page you will add the data store(s) that you will be working with. You can add as you would like.
-            These can later be managed (updated/deleted) on the <strong>Manage Data Stores</strong> page located on 
-            the <strong>left menu bar</strong> under the <strong>Manage</strong> heading.            
-            For each data store, all fields shown must be completed. A description of each field is given here:
+            En esta página agregará la base de datos con la que trabajará. Puede agregar más de una base de datos.
+            Estas pueden ser administradas luego (editadas/borradas) en la opción de <strong>Administración de Base de Datos</strong>
+            localizada en <strong>la barra de navegación a la izquierda</strong> bajo el encabezado de <strong>Administración</strong>.
+            Por cada base de datos que agregue, todos los campus mostrados deben ser completados. Una descripción de cada campo es dada aquí:
         </p>
         <p>
             <ul>
-                <h4><li>Data Store Server Name</li></h4>
+                <h4><li>Nombre de la Base de Datos</li></h4>
                     <p>
-                        Since you can add multiple data stores, a unique name must be given to help you recognize each one within this app.
-                        This name can be anything you would like.
+                        Como puede agregar más de una base de datos, un nombre único debe ser dado para ayudar a reconocer cada base de datos.
+                        Este nombre puede ser cualquier nombre que desee.
                     </p>
-                <h4><li>Data Store Type</li></h4>
+                <h4><li>Tipo de Base de Datos</li></h4>
                     <p>
-                        This is the type of your data store. There are two options: CKAN or Hydroshare. CKAN is the only functional option at the moment.
-                        If you are unfamiliar with CKAN, learn about it <a href="http://ckan.org/" target="_blank">here</a>.
-                        The Hydroshare capability will be added in the future.
+                        Este es el tipo de base de datos. Hay dos opciones: CKAN o HydroShare. CKAN es la única base de datos external funcional en
+                        este momento. También puede utilizar su servidor local como base de datos. Si no conoce CKAN, puede aprender más de esta
+                        <a href="http://ckan.org/" target="_blank">aquí</a>.
                     </p>                       
-                <h4><li>Data Store API Endpoint</li></h4>
+                <h4><li>API Endpoint de la Base de Datos</li></h4>
                     <p>
-                        This is the the URL of your data store. NOTE: This URL <em>must</em> end in "/api/3/action". 
+                        Este es el URL de su base de datos. NOTA: Este URL <em>debe</em> terminar en "/api/3/action".
                     </p>
-                <h4><li>Data Store API Key</li></h4>
+                <h4><li>API Key de la Base de Datos</li></h4>
                     <p>
-                        This is the unique key associated with the above data store API endpoint.
-                    </p>                       
+                        Este es la llave asociada con su API endpoint.
+                    </p>
             </ul>
-    <li id="add-watershed" class="how-to-steps">Add a Watershed</li>
+    <li id="add-watershed" class="how-to-steps">Agregar una Cuenca</li>
         <p>
-            Now you can get to the real bread and butter of this app: adding watersheds so we can view them. On
-            the <strong>left menu bar</strong> under the <strong>Add</strong> heading click the <strong>Add a
-            Watershed</strong> option.
+            Ahora llegamos a la parte esencial de esta herramienta: agregar cuencas para que puedan ser visualizadas. en
+            <strong>la barra de navegación a la izquierda</strong> bajo el encabezado <strong>Agregar</strong> haga click en
+            la opción de <strong>Agregar una Cuenca</strong>.
         </p>
-        <p>You should see the following screen:</p>
+        <p>Verá la siguiente pantalla:</p>
         <img src="{% static 'streamflow_prediction_tool/images/screenshot_add_watershed.png' %}" class="screenshots">
         <br><br>        
         <p>
-            On this page you will add the watershed(s) that you will be working with. You can add as many watersheds as you would like.
-            These can later be managed (updated/deleted) on the <strong>Manage Watersheds</strong> page located on 
-            the <strong>left menu bar</strong> under the <strong>Manage</strong> heading.            
-            As this is a dynamic form, the total fields required for submission will be based upon your selection in previous fields.
-            A description of each possible field is given here:
+            En esta página agregará las cuencas con las que trabajará. Puede agregar más de una cuenca.
+            Estas pueden ser administradas luego (editadas/borradas) en la opción de <strong>Administración de Cuencas</strong>
+            localizada en <strong>la barra de navegación a la izquierda</strong> bajo el encabezado de <strong>Administración</strong>.
+            El formulario para agregar cuencas es dinámico y el número de campos requeridos dependerá de su selección en campos previos.
+            Una descripción de cada campo es dada aquí:
         </p>
         <ul>
-            <h4><li>Watershed Display Name</li></h4>
+            <h4><li>Nombre del Area de Interés</li></h4>
                 <p>
-                    Since you can add multiple watersheds, a unique name must be given to help you recognize each one.
-                    This name can be anything you would like.
+                    Como puede agregar más de un área de interés, un nombre único debe ser dado para ayudar a reconocer cada área de interés.
+                    Este nombre puede ser cualquier nombre que desee.
                 </p>
-            <h4><li>Subbasin Display Name</li></h4>
+            <h4><li>Nombre de la Cuenca</li></h4>
                 <p>
-                    Since you can add multiple watersheds, each with its own subbasin, a unique name must be given to help you recognize each one.
-                    This name can be anything you would like.
+                    Como puede agregar más de una cuenca, un nombre único debe ser dado para ayudar a reconocer cada cuenca.
+                    Este nombre puede ser cualquier nombre que desee.
                 </p>
-            <h4><li>Select a Data Store</li></h4>
+            <h4><li>Seleccione una base de datos</li></h4>
                 <p>
-                    Whether you added a new data store or not, there is always at least one option: "Local Server (local)". This is a data store that cannot be tampered
-                    with (changed/removed) since it corresponds to the computer you are currently on. This option is not associated with any unique additional fields.
-                    The other options in the drop-down will correspond to the data stores that you have added previously.
+                    La opción por default es su servidor local. Esta opción no está asociada a ningún otro campo. Las demmás
+                    opciones que aparezcan en este campo corresponden a la o las bases de datos agregadas previamentes.
                 </p>
                 <ul>
                     <h5><li>Local Server (local)</li></h5>
-                    <p>No additional options are associated with this selection.</p>
-
-                    <h5><li>(User-added Data Store)</li></h5>
-                    <p>If this option is selected, the following associated fields dynamically appear:</p>
                     <ul>
-                        <h6><li>ECMWF Watershed Data Store Name</li></h6>
-                        <p>This is the name of the ECMWF watershed as it will be recorded on the data store server. Thus, this name differs from the display name given above.</p>
-                        <h6><li>ECMWF Subbasin Data Store Name</li></h6>
-                        <p>This is the name of the ECMWF subbasin as it will be recorded on the data store server. Thus, this name differs from the display name given above.</p>
-                        <h6><li>ECMWF RAPID Input Files (Optional)</li></h6>
-                        <p>You can choose to upload RAPID input files for your watershed if you have them.</p>
+                        <h6><li>Nombre del Area de Interes en la Base de Datos</li></h6>
+                        <p>Este es el nombre del área de interés en la base de datos y por ende puede direfir del nombre dado en la opción de "Nombre del Aréa de Interés.</p>
+                        <h6><li>Nombre de la Cuenca en la Base de Datos</li></h6>
+                        <p>Este es el nombre de la cuenca en la base de datos y por ende puede direfir del nombre dado en la opción de "Nombre de la Cuenca.</p>
+                    </ul>
+
+                    <h5><li>Otra base de datos que no es la default</li></h5>
+                    <p>Si esta opción es seleccionada, los siguientes campos aparecerán dinámicamente:</p>
+                    <ul>
+                        <h6><li>GloFAS-RAPID Archivos de Entrada (Opcional)</li></h6>
+                        <p>Puede subir archivos de entrada para su cuenca por esta vía.</p>
                     </ul>
                 </ul>
-            <h4><li>Select a Geoserver</li></h4>
+            <h4><li>Seleccione un Servidor Geoespacial</li></h4>
                 <p>
-                    Whether you added a new data store or not, there is always at least one option: "Local Server (media)". This is a geoserver that cannot be tampered
-                    with (changed/removed) since it corresponds to the computer you are currently on. There are two dynamic fields associated with this option.
+                    Hay does opciones asociadas con este campo.
                 </p>
                 <ul>
-                    <h5><li>Upload Shapefile?</li></h5>
+                    <h5><li>Subir Shapefile?</li></h5>
                         <ul>
-                            <h6><li>Yes</li></h6>
-                            <p> You can upload your own shapefiles to the selected geoserver if you have the files on your computer.
+                            <h6><li>Si</li></h6>
+                            <p> Puede subir un shapefile al servidor geoespacial seleccionado.
                             <ul>
-                                <h6><li>Drainage Line Shapefile</li></h6>
-                                    <p>This drainage line shapefile is REQUIRED as a bare minimum.</p>
-                                <h6><li>Boundary Shapefile (Optional)</li></h6>
-                                <h6><li>Gage Shapefile (Optional)</li></h6>
-                                <h6><li>AHPS Station Shapefile (Optional)</li></h6>
+                                <h6><li>Shapefile con Red Fluvial</li></h6>
+                                    <p>Esta es la red fluvial y es un campo REQUERIDO.</p>
+                                <h6><li>Shapefile con Cuencas (Opcional)</li></h6>
+                                <h6><li>Shapefile con estaciones de observación (Opcional)</li></h6>
+                                <h6><li>Shapefile con estaciones AHPS (Opcional)</li></h6>
                             </ul>
                         </ul>
                         <ul>
                             <h6><li>No</li></h6>
-                            <p>This option is for layers that have already been uploaded previously to the selected geoserver. You specify the name of this layer as it is found on the geoserver.</p>
+                            <p>Esta opción es para capas que ya han sido agregadas anteriormente al servidor geoespacial seleccionada.
+                                El nombre de la capa debe sere especificado como se encuentra en el servidor geoespacial (Geoserver).</p>
                             <ul>
-                                <h6><li>Geoserver Drainage Line Layer</li></h6>
-                                    <p>This drainage line layer is REQUIRED as a bare minimum.</p>
-                                <h6><li>Geoserver Boundary Layer (Optional)</li></h6>
-                                <h6><li>Geoserver Gage Layer (Optional)</li></h6>
-                                <h6><li>Geoserver Historical Flood Map Layer Group (Optional)</li></h6>
-                                    <p>Note: This is NOT a layer. It is a layer group.</p>
-                                <h6><li>Geoserver AHPS Station Layer (Optional)</li></h6>
+                                <h6><li>Shapefile con Red Fluvial</li></h6>
+                                    <p>Esta es la red fluvial y es un campo REQUERIDO.</p>
+                                <h6><li>Shapefile con Cuencas (Opcional)</li></h6>
+                                <h6><li>Shapefile con estaciones de observación (Opcional)</li></h6>
+                                <h6><li>Geoserver Mapa con Inundaciones Historicas (Opcional)</li></h6>
+                                    <p>Nota: Esta no es una capa. Es un grupo de capas.</p>
+                                <h6><li>Shapefile con estaciones AHPS (Opcional)</li></h6>
                             </ul>
                         </ul>
                 </ul>

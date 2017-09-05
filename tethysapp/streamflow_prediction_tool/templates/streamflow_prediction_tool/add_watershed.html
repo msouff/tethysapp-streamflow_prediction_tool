@@ -11,70 +11,69 @@
 {% load tethys_gizmos %}
 
 {% block app_content %}
-    <h1>Add a Watershed</h1>
+    <h1>Agregar una Cuenca</h1>
     {% if geoserver_select %}
         <div id="message" class="alert alert-danger hidden" role="alert"></div>
         {% gizmo text_input watershed_name_input %}
         {% gizmo text_input subbasin_name_input %}
     
-        <h3>Data Storage</h3>
-        <em>This is where the predictions are stored.</em><br/><br/>
+        <h3>Base de Datos</h3>
+        <em>Donde se guardan los pronósticos.</em><br/><br/>
         {% gizmo select_input data_store_select %}
-        <p class="help-block">Don't see the data store you want? Add one <a href="{% url 'streamflow_prediction_tool:add-data-store' %}">here</a>.</p>
-        <h5>ECMWF Data Storage Input</h5>
-        <p class="help-block">The format of the ECMWF dataset name on the data store server 
-        is erfp-[watershed name]-[subbasin name]-[forecast timestamp] (Ex. erfp-magdalena-el_banco-20150603t00).</p>
+        <p class="help-block">¿No ve su base de datos? Agregue una <a href="{% url 'streamflow_prediction_tool:add-data-store' %}">aquí</a>.</p>
+        <h5>Información sobre la Base de Datos</h5>
+        <p class="help-block">El formato del pronóstico en la base de datos es
+        erfp-[área de interés]-[cuenca]-[fecha inicial] (Ex. erfp-magdalena-el_banco-20150603t00).</p>
         {% gizmo text_input data_store_watershed_name_input %}
-        <p class="help-block">This is the watershed name in the ECMWF dataset name and RAPID folder name.</p>
+        <p class="help-block">Este es el nombre del área de interés en la base de datos.</p>
         {% gizmo text_input data_store_subbasin_name_input %}
-        <p class="help-block">This is the subbasin name in the ECMWF dataset name and end of RAPID 
-        namelist file name - rapid_namelist_[subbasin_name].dat (Ex. rapid_namelist_el_banco).</p>
+        <p class="help-block">Este es el nombre de la cuenca de interés en la base de datos.</p>
         <div class="form-group data_store hidden">
-            <label class="control-label" for="ecmwf-rapid-files-upload-input">ECMWF RAPID Input Files (Optional)</label>
+            <label class="control-label" for="ecmwf-rapid-files-upload-input">GloFAS-RAPID archivos de entrada (Opcional)</label>
             <input id="ecmwf-rapid-files-upload-input" name="ecmwf-rapid-files-upload-input" type="file" accept=".zip">
-            <p class="help-block">These files are used on the computatonal node to run the simulation.</p>
+            <p class="help-block">Estos archivos son usados en la computación de la simulación.</p>
         </div>
     
-        <h3>Geoserver Location</h3>
-        <em>Where the reach and catchbasin files are stored.</em><br/><br/>
+        <h3>Servidor Geoespacial</h3>
+        <em>Donse se guardan la red fluvial y las cuencas.</em><br/><br/>
         {% gizmo select_input geoserver_select %}
-        <p class="help-block">Don't see the geoserver you want? Add one <a href="{% url 'streamflow_prediction_tool:add-geoserver' %}">here</a>.</p>
+        <p class="help-block">¿No ve su servidor geoespacial? Agregue uno <a href="{% url 'streamflow_prediction_tool:add-geoserver' %}">aquí</a>.</p>
         {% gizmo toggle_switch shp_upload_toggle_switch %}
         <!-- Drainage Line !-->
         {% gizmo text_input geoserver_drainage_line_input %}
         <div class="form-group geo_upload">
-            <label class="control-label" for="drainage-line-shp-upload-input">Drainage Line Shapefile</label>
+            <label class="control-label" for="drainage-line-shp-upload-input">Shapefile con Red Fluvial</label>
             <input id="drainage-line-shp-upload-input" name="drainage-line-shp-upload-input" type="file" accept=".shp,.shx,.prj,.dbf" multiple>
-            <p class="help-block hidden">Must select file to submit!</p>
+            <p class="help-block hidden">¡Debe seleccionar archivo para enviar!</p>
         </div>
-        <p class="help-block geo_upload">This is the shapefile file representing the river network. Need .shp, .shx, .prj, .dbf files.</p>
+        <p class="help-block geo_upload">Este es el shapefile que representa la red fluvial. Requiere archivos .shp, .shx, .prj, .dbf.</p>
         <!-- Boundaries !-->
         {% gizmo text_input geoserver_boundary_input %}
         <div class="form-group geo_upload">
-            <label class="control-label" for="boundary-shp-upload-input">Boundary Shapefile (Optional)</label>
+            <label class="control-label" for="boundary-shp-upload-input">Shapefile con Sub-Cuencas (Opcional)</label>
             <input id="boundary-shp-upload-input" name="boundary-shp-upload-input" type="file" accept=".shp,.shx,.prj,.dbf" multiple>
         </div>
-        <p class="help-block geo_upload">This is the shapefile file representing the watershed basin. Need .shp, .shx, .prj, .dbf files.</p>
+        <p class="help-block geo_upload">Este es el shapefile que representa las sub-cuencas. Requiere archivos .shp, .shx, .prj, .dbf.</p>
         <!-- Gages !-->
         {% gizmo text_input geoserver_gage_input %}
         <div class="form-group geo_upload">
-            <label class="control-label" for="gage-shp-upload-input">Gage Shapefile (Optional)</label>
+            <label class="control-label" for="gage-shp-upload-input">Shapefile con Estaciones de Observación (Opcional)</label>
             <input id="gage-shp-upload-input" name="gage-shp-upload-input" type="file" accept=".shp,.shx,.prj,.dbf" multiple>
         </div>
-        <p class="help-block geo_upload">This is the shapefile file representing the gage stations. Need .shp, .shx, .prj, .dbf files.</p>
+        <p class="help-block geo_upload">Este es el shapefile que representa las estaciones de observación. Requiere archivos .shp, .shx, .prj, .dbf.</p>
         <!-- Historical Flood Map Layer Group !-->
         {% gizmo text_input geoserver_historical_flood_map_input %}
         <!-- AHPS Stations !-->
         {% gizmo text_input geoserver_ahps_station_input %}
         <div class="form-group geo_upload">
-            <label class="control-label" for="ahps-station-shp-upload-input">AHPS Station Shapefile (Optional)</label>
+            <label class="control-label" for="ahps-station-shp-upload-input">AHPS Station Shapefile (Opcional)</label>
             <input id="ahps-station-shp-upload-input" name="ahps-station-shp-upload-input" type="file" accept=".shp,.shx,.prj,.dbf" multiple>
         </div>
-        <p class="help-block geo_upload">This is the shapefile file representing the AHPS stations. Need .shp, .shx, .prj, .dbf files.</p>
+        <p class="help-block geo_upload">Este es el shapefile que representa las estaciones AHPS. Requiere archivos .shp, .shx, .prj, .dbf.</p>
         {% gizmo button add_button %}
     {% else %}
-        <div class="alert alert-danger" role="alert">No GeoServers found. You cannot add a watershed until you do.</div>
-        <p> The good news is that there is a simple solution. All you have to do is click <a href="{% url 'streamflow_prediction_tool:add-geoserver' %}">here</a> and add one.</p>
+        <div class="alert alert-danger" role="alert">Servidor geoespacial no encontrado. No se puede agregar una cuenca sin uno.</div>
+        <p> Agregue un servidor geoespacial <a href="{% url 'streamflow_prediction_tool:add-geoserver' %}">aquí</a>.</p>
     {% endif %}
 {% endblock %}
 
