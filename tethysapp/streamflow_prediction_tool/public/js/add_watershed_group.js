@@ -6,9 +6,9 @@
  *****************************************************************************/
 
 //initialize help blockss
-var help_html = '<p class="help-block hidden">No watershed group name specified.</p>';
+var help_html = '<p class="help-block hidden">Conjunto de cuencas no especificado.</p>';
 $('#watershed-group-name-input').parent().parent().append(help_html);
-help_html = '<p class="help-block hidden">No watersheds selected.</p>';
+help_html = '<p class="help-block hidden">Cuencas no seleccionadas.</p>';
 $('#watershed_select').parent().append(help_html);
 
 //handle the submit event

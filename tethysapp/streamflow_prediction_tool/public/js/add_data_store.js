@@ -6,15 +6,15 @@
  *****************************************************************************/
 
 //initialize help blockss
-var help_html = '<p class="help-block hidden">No data store name specified.</p>';
+var help_html = '<p class="help-block hidden">Base de Datos no especificada.</p>';
 $('#data-store-name-input').parent().parent().append(help_html);
-help_html = '<p class="help-block hidden">No data store type specified.</p>';
+help_html = '<p class="help-block hidden">Tipo de Base de Datos no especificado.</p>';
 $('#data-store-type-select').parent().append(help_html);
-help_html = '<p class="help-block hidden">No datastore API endpoint specified.</p>';
+help_html = '<p class="help-block hidden">API endpoint no especificado.</p>';
 $('#data-store-endpoint-input').parent().parent().append(help_html);
-help_html = '<p id="endpoint-error" class="help-block hidden">Endpoint must end in "api/3/action"</p>';
+help_html = '<p id="endpoint-error" class="help-block hidden">Endpoint debe terminar en "api/3/action"</p>';
 $('#data-store-endpoint-input').parent().parent().append(help_html);
-help_html = '<p class="help-block hidden">No API key specified.</p>';
+help_html = '<p class="help-block hidden">No API no especificado.</p>';
 $('#data-store-api-key-input').parent().parent().append(help_html);
 
 //handle the submit event

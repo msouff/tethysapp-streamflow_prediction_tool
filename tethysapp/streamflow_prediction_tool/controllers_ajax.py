@@ -502,13 +502,13 @@ def get_ecmwf_hydrograph_plot(request):
         return_shapes = []
 
     layout = go.Layout(
-        title="Forecast<br><sub>{0} ({1}): {2}</sub>".format(
+        title="Pronostico<br><sub>{0} ({1}): {2}</sub>".format(
             watershed_name, subbasin_name, river_id),
         xaxis=dict(
-            title='Date',
+            title='Fecha',
         ),
         yaxis=dict(
-            title='Streamflow ({}<sup>3</sup>/s)'
+            title='Caudal ({}<sup>3</sup>/s)'
                   .format(get_units_title(units))
         ),
         shapes=return_shapes,
@@ -817,14 +817,14 @@ def get_daily_seasonal_streamflow_chart(request):
     )
 
     layout = go.Layout(
-        title="Daily Seasonal Streamflow<br>"
+        title="Patron de Caudales por Dia<br>"
               "<sub>{0} ({1}): {2}</sub>"
               .format(watershed_name, subbasin_name, river_id),
         xaxis=dict(
-            title='Day of Year',
+            title='Dia',
             tickformat="%b"),
         yaxis=dict(
-            title='Streamflow ({}<sup>3</sup>/s)'
+            title='Caudal ({}<sup>3</sup>/s)'
                   .format(get_units_title(units)))
     )
 
@@ -873,8 +873,8 @@ def get_monthly_seasonal_streamflow_chart(request):
         avg_series *= M3_TO_FT3
         std_plus_series *= M3_TO_FT3
 
-    months_arr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul',
-                  'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    months_arr = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul',
+                  'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
     # generate chart
     max_scatter = go.Scatter(
         name='Max.',
@@ -919,14 +919,14 @@ def get_monthly_seasonal_streamflow_chart(request):
     )
 
     layout = go.Layout(
-        title="Monthly Seasonal Streamflow<br>"
+        title="Patron de Caudales por Mes<br>"
               "<sub>{0} ({1}): {2}</sub>"
               .format(watershed_name, subbasin_name, river_id),
         xaxis=dict(
-            title='Month',
+            title='Mes',
             tickformat="%b"),
         yaxis=dict(
-            title='Streamflow ({}<sup>3</sup>/s)'
+            title='Caudal ({}<sup>3</sup>/s)'
                   .format(get_units_title(units)))
     )
 
@@ -984,12 +984,12 @@ def get_flow_duration_curve(request):
         y=sorted_daily_avg,
     )
 
-    layout = go.Layout(title="Flow-Duration Curve<br><sub>{0} ({1}): {2}</sub>"
+    layout = go.Layout(title="Curva de Caudales Clasificados<br><sub>{0} ({1}): {2}</sub>"
                              .format(watershed_name, subbasin_name, river_id),
                        xaxis=dict(
-                           title='Exceedance Probability (%)',),
+                           title='Probabilidad de Ocurrencia (%)',),
                        yaxis=dict(
-                           title='Streamflow ({}<sup>3</sup>/s)'
+                           title='Caudal ({}<sup>3</sup>/s)'
                                  .format(get_units_title(units)),
                            type='log',
                            autorange=True),

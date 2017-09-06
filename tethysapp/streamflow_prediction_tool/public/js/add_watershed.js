@@ -79,21 +79,21 @@ var ERFP_ADD_WATERSHED = (function() {
         m_uploading_data = false;
 
         //initialize gizmo help blockss
-        var help_html = '<p class="help-block hidden">No watershed name specified.</p>';
+        var help_html = '<p class="help-block hidden">Area de interes no especificada.</p>';
         $('#watershed-name-input').parent().parent().append(help_html);
-        help_html = '<p class="help-block hidden">No subbasin name specified.</p>';
+        help_html = '<p class="help-block hidden">Cuenca no especificada.</p>';
         $('#subbasin-name-input').parent().parent().append(help_html);
 
-        help_html = '<p class="help-block hidden">No data store selected.</p>';
+        help_html = '<p class="help-block hidden">Base se de Datos no especificada.</p>';
         $('#data-store-select').parent().append(help_html);
-        help_html = '<p class="help-block hidden">No ECMWF watershed name specified.</p>';
+        help_html = '<p class="help-block hidden">Nombre del area de interes en la base de datos no especificado.</p>';
         $('#ecmwf-data-store-watershed-name-input').parent().append(help_html);
-        help_html = '<p class="help-block hidden">No ECMWF subbasin name specified.</p>';
+        help_html = '<p class="help-block hidden">Nombre de la cuenca en la base de datos no especificado.</p>';
         $('#ecmwf-data-store-subbasin-name-input').parent().append(help_html);
 
-        help_html = '<p class="help-block hidden">No Geoserver selected.</p>';
+        help_html = '<p class="help-block hidden">Servidor geoespacial no especificado.</p>';
         $('#geoserver-select').parent().append(help_html);
-        help_html = '<p class="help-block hidden">No Geoserver drainage line layer name specified.</p>';
+        help_html = '<p class="help-block hidden">Capa con red fluvial no especificada.</p>';
         $('#geoserver-drainage-line-input').parent().parent().append(help_html);
     
         $('#geoserver-drainage-line-input').parent().parent().addClass('geo_input');

@@ -9,12 +9,12 @@
 <table id="data_store_table" class="table table-striped">
     <thead>
         <tr>
-            <th>Update</th>
-            <th>Delete</th>
+            <th>Actualizar</th>
+            <th>Borrar</th>
             <th>ID</th>
-            <th>Name</th>
-            <th>Owner Organization</th>
-            <th>Type</th>
+            <th>Nombre</th>
+            <th>Organización</th>
+            <th>Tipo</th>
             <th>API Endpoint</th>
             <th>API Key</th>
         </tr>
@@ -23,11 +23,11 @@
     {% for data_store in data_stores %}
         <tr>
             <td class="table-button"><div class=" btn-group "><a name="submit-update-data-store" class="btn btn-warning submit-update-data-store" role="button">
-                <span class="glyphicon glyphicon-floppy-disk"></span> Update </a>
+                <span class="glyphicon glyphicon-floppy-disk"></span> Actualizar </a>
                 </div>
             </td>
             <td class="table-button"><div class=" btn-group "><a name="submit-delete-data-store" class="btn btn-danger submit-delete-data-store" role="button">
-                <span class="glyphicon glyphicon-remove"></span> Delete </a>
+                <span class="glyphicon glyphicon-remove"></span> Borrar </a>
                 </div>
             </td>
             <td class="data-store-id">{{data_store.id}}</td>
@@ -41,7 +41,7 @@
                         <input class="form-control data-store-api-key-input" name="data-store-api-key-input" type="password" value="{{data_store.api_key}}" placeholder="e.g.: a1b2c3-d4e5d6-f7g8h9">
                         <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
                     </div>
-                    <p class="help-block hidden">No data store API key specified.</p>
+                    <p class="help-block hidden">API key no espedificado.</p>
                 </div>
             </td>
         </tr>
@@ -49,5 +49,5 @@
     </tbody>
 </table>
 {% else %}
-<p>No Data Stores to display. To add one, click <a href="../add-data-store">here</a>.</p>
+<p>No Base de Datos externa encontrada. Para agregar una haga click <a href="../add-data-store">aquí</a>.</p>
 {% endif %}

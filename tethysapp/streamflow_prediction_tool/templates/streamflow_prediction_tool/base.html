@@ -38,7 +38,7 @@
     <li {% if "manage-data-stores" in request.path %} class="active" {% endif %}><a href="{% url 'streamflow_prediction_tool:manage-data-stores' %}">Administración de Base de Datos</a></li>
     <li {% if "manage-geoservers" in request.path %} class="active" {% endif %}><a href="{% url 'streamflow_prediction_tool:manage-geoservers' %}">Administración de Servidor Geoespacial</a></li>
     {% endif %}
-    <li class="title">Learn</li>
+    <li class="title">Más Información</li>
     {% if user.is_superuser or user.is_staff %}
     <li {% if "getting-started" in request.path %} class="active" {% endif %}><a href="{% url 'streamflow_prediction_tool:getting-started' %}">Guía de Inicio</a></li>
     {% endif %}

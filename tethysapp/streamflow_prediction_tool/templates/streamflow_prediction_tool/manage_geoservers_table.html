@@ -10,24 +10,24 @@
 <table id="geoserver_table" class="table table-striped">
     <thead>
         <tr>
-            <th>Update</th>
-            <th>Delete</th>
+            <th>Actualizar</th>
+            <th>Borrar</th>
             <th>ID</th>
-            <th>Name</th>
+            <th>Nombre</th>
             <th>URL</th>
-            <th>Username</th>
-            <th>Password</th>
+            <th>Usuario</th>
+            <th>Contraseña</th>
         </tr>
     </thead>
 <tbody>
 {% for geoserver in geoservers %}
     <tr>
         <td class="table-button"><div class=" btn-group "><a name="submit-update-geoserver" class="btn btn-warning submit-update-geoserver" role="button">
-            <span class="glyphicon glyphicon-floppy-disk"></span> Update </a>
+            <span class="glyphicon glyphicon-floppy-disk"></span> Actualizar </a>
             </div>
         </td>
         <td class="table-button"><div class=" btn-group "><a name="submit-delete-geoserver" class="btn btn-danger submit-delete-geoserver" role="button">
-            <span class="glyphicon glyphicon-remove"></span> Delete </a>
+            <span class="glyphicon glyphicon-remove"></span> Borrar </a>
             </div>
         </td>
         <td class="geoserver-id">{{geoserver.id}}</td>
@@ -40,7 +40,7 @@
                     <input class="form-control geoserver-password-input" name="geoserver-password-input" type="password" value="{{geoserver.password}}" placeholder="e.g.: geoserver">
                     <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
                 </div>
-                <p class="help-block hidden">No geoserver password specified.</p>
+                <p class="help-block hidden">Contraseña no especificada.</p>
             </div>
         </td>
     </tr>
@@ -48,5 +48,5 @@
 </tbody>
 </table>
 {% else %}
-<p>No geoservers to display. To add one, click <a href="../add-geoserver">here</a>.</p>
+<p>No hay ningún Servidor Geoespacial. Para agregar uno haga click <a href="../add-geoserver">aquí</a>.</p>
 {% endif %}

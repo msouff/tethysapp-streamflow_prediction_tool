@@ -405,8 +405,8 @@ def app_map(request):
 
     units_toggle_switch = ToggleSwitch(display_text='Unidades:',
                                        name='units-toggle',
-                                       on_label='Metric',
-                                       off_label='Ingles',
+                                       on_label='Metros',
+                                       off_label='Pies',
                                        size='mini',
                                        initial=True, )
 

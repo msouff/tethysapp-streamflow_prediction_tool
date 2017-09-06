@@ -7,11 +7,11 @@
 
 jQuery(function() {
     //initialize help blockss
-    var help_html = '<p class="help-block hidden">No geoserver name specified.</p>';
+    var help_html = '<p class="help-block hidden">Servidor Geoespacial no especificado.</p>';
     $('#geoserver-name-input').parent().parent().append(help_html);
-    help_html = '<p class="help-block hidden">No geoserver url specified.</p>';
+    help_html = '<p class="help-block hidden">URL del servidor no especificado.</p>';
     $('#geoserver-url-input').parent().parent().append(help_html);
-    help_html = '<p class="help-block hidden">No geoserver username specified.</p>';
+    help_html = '<p class="help-block hidden">Usuario del servidor no especificado.</p>';
     $('#geoserver-username-input').parent().parent().append(help_html);
     
     //handle the submit event
