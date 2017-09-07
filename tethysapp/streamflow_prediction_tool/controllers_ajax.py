@@ -421,7 +421,7 @@ def get_ecmwf_hydrograph_plot(request):
     datetime_end = forecast_statistics['mean'].index[-1]
 
     avg_series = go.Scatter(
-        name='Mean',
+        name='Promedio',
         x=forecast_statistics['mean'].index,
         y=forecast_statistics['mean'].values,
         line=dict(
@@ -453,7 +453,7 @@ def get_ecmwf_hydrograph_plot(request):
     )
 
     std_dev_lower_series = go.Scatter(
-        name='Std. Dev. Lower',
+        name='Dev. Est. Inferior',
         x=std_dev_lower_df.index,
         y=std_dev_lower_df.values,
         fill='tonexty',
@@ -465,7 +465,7 @@ def get_ecmwf_hydrograph_plot(request):
     )
 
     std_dev_upper_series = go.Scatter(
-        name='Std. Dev. Upper',
+        name='Dev. Est. Superior',
         x=forecast_statistics['std_dev_range_upper'].index,
         y=forecast_statistics['std_dev_range_upper'].values,
         fill='tonexty',
@@ -484,7 +484,7 @@ def get_ecmwf_hydrograph_plot(request):
 
     if 'high_res' in forecast_statistics:
         plot_series.append(go.Scatter(
-            name='HRES',
+            name='Alta Resolucion',
             x=forecast_statistics['high_res'].index,
             y=forecast_statistics['high_res'].values,
             line=dict(
@@ -721,13 +721,13 @@ def get_historical_hydrograph(request):
         get_return_period_ploty_info(request, qout_time[0], qout_time[-1])
 
     layout = go.Layout(
-        title="Historical Streamflow<br><sub>{0} ({1}): {2}</sub>".format(
+        title="Simulacion Historica<br><sub>{0} ({1}): {2}</sub>".format(
             watershed_name, subbasin_name, river_id),
         xaxis=dict(
-            title='Date',
+            title='Fecha',
         ),
         yaxis=dict(
-            title='Streamflow ({}<sup>3</sup>/s)'
+            title='Caudal ({}<sup>3</sup>/s)'
                   .format(get_units_title(units))
         ),
         shapes=return_shapes,
@@ -787,7 +787,7 @@ def get_daily_seasonal_streamflow_chart(request):
 
     # generate chart
     avg_scatter = go.Scatter(
-        name='Average',
+        name='Promedio',
         x=day_of_year,
         y=season_avg,
         line=dict(
@@ -796,7 +796,7 @@ def get_daily_seasonal_streamflow_chart(request):
     )
 
     std_plus_scatter = go.Scatter(
-        name='Std. Dev. Upper',
+        name='Dev. Est. Superior',
         x=day_of_year,
         y=avg_plus_std,
         fill=None,
@@ -807,7 +807,7 @@ def get_daily_seasonal_streamflow_chart(request):
     )
 
     std_min_scatter = go.Scatter(
-        name='Std. Dev. Lower',
+        name='Dev. Est. Inferior',
         x=day_of_year,
         y=avg_min_std,
         fill='tonexty',
@@ -889,7 +889,7 @@ def get_monthly_seasonal_streamflow_chart(request):
     )
 
     std_plus_scatter = go.Scatter(
-        name='Std. Dev. Upper',
+        name='Dev. Est. Superior',
         x=months_arr,
         y=std_plus_series,
         fill='tonexty',
@@ -900,7 +900,7 @@ def get_monthly_seasonal_streamflow_chart(request):
     )
 
     avg_scatter = go.Scatter(
-        name='Average',
+        name='Promedio',
         x=months_arr,
         y=avg_series,
         line=dict(
