@@ -1112,12 +1112,12 @@ var ERFP_MAP = (function() {
                         //create new select2
                         $('#long-term-select').select2({
                             data: data.output_directories,
-                            placeholder: "Select a Date"
+                            placeholder: "Seleccione una Fecha"
                         });
 
                         $('#download-select').select2({
                             data: data.output_directories,
-                            placeholder: "Select a Date"
+                            placeholder: "Seleccione una Fecha"
                         });
 
                         if (m_downloading_ecmwf_hydrograph) {
