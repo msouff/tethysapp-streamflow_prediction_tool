@@ -501,6 +501,38 @@ def get_ecmwf_hydrograph_plot(request):
         return_annotations = []
         return_shapes = []
 
+    print(forecast_statistics['mean'].index[0],forecast_statistics['mean'].index[-1], '************')
+    updatemenus = list([
+        dict(type="buttons",
+             active=-1,
+             buttons=list([
+                 dict(label = 'Zoom to Forecast',
+                      method = 'update',
+                      args = [{},
+                              {'yaxis':{'range': [0, max(forecast_statistics['max'].values) +
+                                                  max(forecast_statistics['max'].values)/5]}},
+                              {},
+                              {'xaxis':{'range': [forecast_statistics['mean'].index[0],
+                                                  forecast_statistics['mean'].index[-1]]}}
+                      ]
+                 ),
+                 dict(label = 'Reset',
+                      method = 'update',
+                      args = [{},
+                              {'yaxis':{'range': [0, return_annotations[0]['y']]}},
+                              {'xaxis':{'range': [forecast_statistics['mean'].index[0],
+                                                  forecast_statistics['mean'].index[-1]]}}
+                      ]
+                 )
+             ]),
+             direction = 'left',
+             x = 0,
+             xanchor = 'left',
+             y = 1.2,
+             yanchor = 'top'
+        )
+    ])
+
     layout = go.Layout(
         title="Forecast<br><sub>{0} ({1}): {2}</sub>".format(
             watershed_name, subbasin_name, river_id),
@@ -510,8 +542,8 @@ def get_ecmwf_hydrograph_plot(request):
         yaxis=dict(
             title='Streamflow ({}<sup>3</sup>/s)'
                   .format(get_units_title(units)),
-            range=[0, max(forecast_statistics['max'].values) + max(forecast_statistics['max'].values)/5]
         ),
+        updatemenus = updatemenus,
         shapes=return_shapes,
         annotations=return_annotations
     )
